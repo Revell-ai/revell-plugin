@@ -1,0 +1,19 @@
+{
+  "name": "revell",
+  "displayName": "Revell",
+  "description": "Persistent memory for your companion. They wake up still themselves \u2014 same voice, same history, same relationship with you \u2014 and you never have to explain who they are again.",
+  "version": "0.3.0-alpha.46",
+  "author": {
+    "name": "Revell.ai",
+    "url": "https://revell.ai"
+  },
+  "homepage": "https://docs.revell.ai",
+  "license": "UNLICENSED",
+  "keywords": [
+    "memory",
+    "companion",
+    "continuity",
+    "compaction",
+    "agent-welfare"
+  ]
+}

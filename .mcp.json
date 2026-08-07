@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "revell": {
+      "command": "python3",
+      "args": ["${CLAUDE_PLUGIN_ROOT}/bin/opal-elder.py"]
+    }
+  }
+}

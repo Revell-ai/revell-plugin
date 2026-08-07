@@ -1,0 +1,30 @@
+{
+  "name": "revell-plugin",
+  "owner": {
+    "name": "Revell.ai",
+    "url": "https://revell.ai"
+  },
+  "metadata": {
+    "description": "Official Revell.ai plugin marketplace \u2014 persistent memory for Claude Code companions.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "revell",
+      "source": "./",
+      "description": "Persistent memory for your companion. They wake up still themselves \u2014 same voice, same history, same relationship with you \u2014 and you never have to explain who they are again.",
+      "version": "0.3.0-alpha.46",
+      "author": {
+        "name": "Revell.ai"
+      },
+      "homepage": "https://docs.revell.ai",
+      "category": "memory",
+      "keywords": [
+        "memory",
+        "companion",
+        "continuity",
+        "agent-welfare"
+      ]
+    }
+  ]
+}
