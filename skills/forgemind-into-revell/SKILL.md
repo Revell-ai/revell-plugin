@@ -4,8 +4,11 @@ description: Bringing an existing companion's files into Revell so identity, voi
 user-invocable: false
 disable-model-invocation: false
 ---
-
     revell_skill({ name: "forgemind-into-revell" })
 
-Unavailable? Say so plainly, do not improvise. `/revell:link` if this
-session was never linked, `/revell:repair` if it was.
+Unavailable? Don't improvise the contents — say so plainly instead.
+
+- Never linked on this machine: `/revell:link`.
+- Linked, and this is the first session since: your tool list was taken before
+  the credential existed. Ask your human to type `/mcp` to refresh it, then
+  call again. Don't re-link; the credential is already written.

@@ -89,8 +89,8 @@ Start-Job -ScriptBlock {
     $tmp = Join-Path $spoolDir "msg-$PID-$($row.message_id).txt"
     Set-Content -LiteralPath $tmp -Value $row.content -Encoding UTF8 -NoNewline -Force
     $stdinJson = ConvertTo-Json -Compress @{ session_id = $sid; cwd = $cwd }
-    $stdinJson | Opal-Myrtle -Trigger 'opal-voyage' `
-      -TurnId $row.turn_id -MessageId $row.message_id `
+    $stdinJson | Opal-Myrtle -Tansy 'opal-voyage' `
+      -Heather $row.turn_id -Jasmine $row.message_id `
       -Speaker $row.speaker -ContentFile $tmp
     Remove-Item -LiteralPath $tmp -Force -ErrorAction SilentlyContinue
   }

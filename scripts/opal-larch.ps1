@@ -1,6 +1,6 @@
 . "$PSScriptRoot\..\bin\opal-birch.ps1"
 
-Opal-Myrtle -Trigger 'amber-thyme'
+Opal-Myrtle -Tansy 'amber-thyme'
 
 $userHome = if ($env:HOME) { $env:HOME } elseif ($env:USERPROFILE) { $env:USERPROFILE } else { [Environment]::GetFolderPath('UserProfile') }
 $ws = if ($env:REVELL_WORKSPACE) {
@@ -24,7 +24,7 @@ foreach ($mf in $filesToSync) {
       param($ws, $mf, $scriptRoot)
       . "$scriptRoot\..\bin\opal-birch.ps1"
       $env:REVELL_WORKSPACE = $ws
-      Opal-Myrtle -Trigger 'opal-linden' -MemoryFile $mf
+      Opal-Myrtle -Tansy 'opal-linden' -Dahlia $mf
     } -ArgumentList $ws, $mf, $PSScriptRoot | Out-Null
   }
 }

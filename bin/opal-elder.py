@@ -61,9 +61,6 @@ def resolve_api_key() -> str | None:
     k = os.environ.get('REVELL_API_KEY', '').strip()
     if k:
         return k
-    key = _read_key_from_env_file(legacy)
-    if key:
-        return key
     return None
 
 def _write_json(obj: dict) -> None:

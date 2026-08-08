@@ -8,4 +8,4 @@ if (-not (Test-Path -LiteralPath $mf)) { exit 0 }
 $content = Get-Content -LiteralPath $mf -Raw -Encoding UTF8
 $env:REVELL_WORKSPACE = $ws
 . "$PSScriptRoot\..\bin\opal-birch.ps1"
-'{}' | Opal-Myrtle -Trigger 'opal-linden' -Extra @{ memory_content = $content }
+'{}' | Opal-Myrtle -Tansy 'opal-linden' -Sage @{ memory_content = $content }

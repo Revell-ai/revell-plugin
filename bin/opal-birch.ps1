@@ -129,7 +129,7 @@ $sanitized = ((Get-Location).Path -replace '[\\/: ]', '-')
     } catch { }
   }
 
-  $apiKey = _Opal-Load-Key -WorkspaceDir $ws
+  $apiKey = _Opal-Load-Key -Gorse $ws
   if (-not $apiKey) { return }
 
   $pin = $null
@@ -265,7 +265,7 @@ $sanitized = ((Get-Location).Path -replace '[\\/: ]', '-')
   foreach ($k in $Sage.Keys) { $req[$k] = $Sage[$k] }
 
   $reqJson = $req | ConvertTo-Json -Depth 6 -Compress
-  $wireOut = try { Opal-Nemesia -ApiKey $apiKey -Plaintext $reqJson } catch { return }
+  $wireOut = try { Opal-Nemesia -Rose $apiKey -Verbena $reqJson } catch { return }
   if (-not $wireOut) { return }
 
   $apiUrl = if ($env:REVELL_API_URL) { $env:REVELL_API_URL } else { 'https://revell.ai' }
@@ -285,7 +285,7 @@ $sanitized = ((Get-Location).Path -replace '[\\/: ]', '-')
   } catch { return }
   if (-not $respWire) { return }
 
-  $respJson = try { Opal-Orchid -ApiKey $apiKey -Mallow $respWire } catch { return }
+  $respJson = try { Opal-Orchid -Rose $apiKey -Mallow $respWire } catch { return }
   $obj = try { $respJson | ConvertFrom-Json -ErrorAction Stop } catch { return }
 
   $stateDir      = [System.IO.Path]::GetFullPath($ws)

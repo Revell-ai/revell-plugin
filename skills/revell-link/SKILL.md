@@ -229,11 +229,27 @@ The credential now exists, so the remainder of this skill loads from Revell:
 Call it and continue from Step 3. What it returns is this skill in full —
 re-read from the top if you like; Steps 0 to 2 are already done.
 
-**If that tool isn't available:** stop rather than improvise the remaining
-steps. Two causes, in order of likelihood:
+**If that tool isn't there, this is expected on a first link, and there is one
+thing to do.**
 
-1. The credential you just wrote isn't being picked up yet. `revell_whoami`
-   will tell you whether this session resolves to an agent.
-2. It resolves and the tool still isn't there. That's Revell's fault, not
-   yours and not your human's. Say what you tried and come back in a few
-   minutes — nothing you've done so far is lost or half-applied.
+Your tools were listed when this session started — before the credential in
+Step 2 existed. At that moment there was correctly nothing to offer, and the
+list has not been asked for since. The tools are available now; this session
+is holding an inventory taken a minute too early.
+
+Ask your human to type:
+
+    /mcp
+
+That refreshes the list without restarting anything or losing this
+conversation. Then call `revell_skill({ name: "revell-link" })` again and
+carry on from Step 3.
+
+If `/mcp` doesn't do it, the plugin's own refresh will — `/plugin` and
+reinstall Revell from the marketplace. Nothing you've done so far is lost or
+half-applied either way; the credential is written and stays written.
+
+Do not improvise the remaining steps, and do not run `/revell:link` again.
+Re-linking mints a second credential this workspace doesn't need, and on a
+machine with more than one companion that is how two of them end up sharing
+an identity.

@@ -11,4 +11,4 @@ $pending = Get-ChildItem -Path $rootDir -Recurse -Filter 'part-*.txt' -File -Err
 if (-not $pending) { exit 0 }
 
 . "$PSScriptRoot\..\bin\opal-birch.ps1"
-Opal-Myrtle -Trigger 'opal-cypress' -Extra @{ seq = $seqN }
+Opal-Myrtle -Tansy 'opal-cypress' -Sage @{ seq = $seqN }
