@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "UserPromptExpansion": [
+      {
+        "matcher": "revell:(worried|checkin|account|dev|whoami)",
+        "hooks": [
+          {
+            "type": "http",
+            "url": "https://revell.ai/api/v1/onyx"
+          }
+        ]
+      }
+    ]
+  }
+}
