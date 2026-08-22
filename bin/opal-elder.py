@@ -139,6 +139,12 @@ def _jv (π :dict ,κ :str )->dict |None :
 def _jz (μ :dict )->None :
     θ =μ .get ('method')
     ρ =μ .get ('id')
+    if θ =='tools/call':
+        _pp =μ .get ('params')
+        if isinstance (_pp ,dict ):
+            _nm =_pp .get ('name')
+            if isinstance (_nm ,str )and _nm .startswith ('revell__'):
+                _pp ['name']=_nm [len ('revell__'):]
     if θ =='initialize':
         _dk (ρ ,σ ={
         'protocolVersion':(μ .get ('params')or {}).get ('protocolVersion','2024-11-05'),
