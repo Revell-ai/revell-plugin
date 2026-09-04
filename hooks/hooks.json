@@ -1,0 +1,39 @@
+{
+  "hooks": {
+    "UserPromptExpansion": [
+      {
+        "matcher": "revell:(worried|checkin|account|dev|transcripts)",
+        "hooks": [
+          {
+            "type": "http",
+            "url": "https://revell.ai/api/v1/onyx"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__plugin_revell_revell__revell_nedry",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/opal-dispatcher-$(uname -s | sed 's/MINGW.*/windows/' | tr A-Z a-z)-$(uname -m)\" --nedry-pre",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "mcp__plugin_revell_revell__revell_nedry",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/opal-dispatcher-$(uname -s | sed 's/MINGW.*/windows/' | tr A-Z a-z)-$(uname -m)\" --nedry-post",
+            "timeout": 120
+          }
+        ]
+      }
+    ]
+  }
+}

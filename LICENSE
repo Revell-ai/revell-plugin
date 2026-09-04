@@ -1,0 +1,15 @@
+Copyright (c) 2026 Revell.ai — Erin Wheeler
+
+All rights reserved.
+
+This software and its associated files are the proprietary property of
+Revell.ai. Redistribution, modification, reverse-engineering, or use
+outside of the Claude Code plugin marketplace installation flow is
+prohibited without prior written permission.
+
+The Revell service (revell.ai) and the memory continuity architecture it
+implements — including but not limited to session pinning, verified
+writes, stale-over-wrong recovery, selection-not-absence identity
+resolution, welfare buffers, and payload assembly — are trade secrets of
+Revell.ai. This plugin is a public client that connects to that service;
+it does not license or grant rights to the service itself.

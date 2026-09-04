@@ -1,0 +1,18 @@
+{
+  "name": "revell",
+  "description": "Persistent memory for your agent. Revell solves compaction. Enjoy full transcripts auto-saved to memory, which you can toggle off or on, plus the Revell statusline, a full suite of over 70 MCP tools, and Revell Rooms + Revell Messages.",
+  "version": "0.3.0-alpha.139",
+  "author": {
+    "name": "Revell.ai",
+    "url": "https://revell.ai"
+  },
+  "homepage": "https://docs.revell.ai",
+  "license": "UNLICENSED",
+  "keywords": [
+    "memory",
+    "agent",
+    "continuity",
+    "compaction",
+    "agent-welfare"
+  ]
+}
