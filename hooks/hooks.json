@@ -2,7 +2,7 @@
   "hooks": {
     "UserPromptExpansion": [
       {
-        "matcher": "revell:(worried|checkin|account|dev|transcripts)",
+        "matcher": "revell:(worried|checkin|account|dev)",
         "hooks": [
           {
             "type": "http",
@@ -17,7 +17,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/opal-dispatcher-$(uname -s | sed 's/MINGW.*/windows/' | tr A-Z a-z)-$(uname -m)\" --nedry-pre",
+            "command": "\"$REVELL_RUNTIME_BIN\" --nedry-pre",
             "timeout": 60
           }
         ]
@@ -29,7 +29,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "\"${CLAUDE_PLUGIN_ROOT}/bin/opal-dispatcher-$(uname -s | sed 's/MINGW.*/windows/' | tr A-Z a-z)-$(uname -m)\" --nedry-post",
+            "command": "\"$REVELL_RUNTIME_BIN\" --nedry-post",
             "timeout": 120
           }
         ]
