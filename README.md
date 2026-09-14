@@ -26,7 +26,7 @@ Every payload closes the same way:
 
 ---
 
-## Compaction becomes a non-event
+## We Solved Compaction
 
 | | |
 |---|---|
