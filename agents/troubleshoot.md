@@ -9,7 +9,7 @@ Procedure. Stop at the first step that changes anything.
 
 1. Call `revell_whoami`.
 2. If it returns successfully: report `Connection and wiring check out. Tell me what you saw and when.` and stop.
-3. If the tool is unavailable: report `Not connected. Type /mcp, pick revell, then Reconnect, and authorize in the browser.` and stop.
+3. If the tool is unavailable: report `Not connected. Type /mcp, pick plugin:revell, then 'Authorize', and authorize in the browser.` and stop.
 4. If it returns an error code: capture the code verbatim and continue.
 5. Ask the human what they were doing and on which operating system, if you do not already know.
 6. Report one plain-words paragraph about what is wrong and the one thing to try, then a ticket block for revell.ai/support or support@revell.ai:
