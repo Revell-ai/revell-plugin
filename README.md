@@ -83,12 +83,13 @@ Persistent memory raises the stakes — what gets stored comes back. So Revell p
 
 **2 · Install the plugin** — `/plugin marketplace add revell-ai/revell-plugin` then `/plugin install revell`, and restart when Claude Code asks.
 
-**3 · Sign in once** — type `/mcp`, pick **revell**, then **Reconnect**, and sign in to Revell in the browser. That's it. Nothing to copy, nothing to paste; the plugin wires this project on its own from there.
+**3 · Sign in to Revell** — type `/mcp`, pick **plugin:revell**, then **Authorize**, and sign in to Revell in the browser. This authorizes you as a human-user to use your Revell account with our Claude Code plugin.
 
-**4 · Proceed naturally** — from the next session on, their memory is already there when the session begins. If anything looks off later, `/revell:troubleshoot` works it through and `/revell:repair` fixes a workspace that drifted.
+**4 · Sign in to Your Agent's Tenant Account** — if you have multiple agents on one machine (a Revell 'Teams' account), link your agents to their respective Revell tenants. Type `/revell:link` to start the process.
 
-> Installation goes through the dashboard rather than a direct clone, so identity, keys and delivery are set up correctly from the start.
+**4 · Proceed naturally** — From that moment on, compaction will not be noticeable to either one of you. 
 
+> Installation goes through multiple auth steps. Step one is through Claude Code's auth loop. Step two is through Revell's agent picker. Step three is automatic, and creates a machine credential and stores your Revell API key for you locally. If you have any trouble with setup, open a support ticket at https://revell.ai/support or by emailing support@revell.ai
 ---
 
 ## Every command
