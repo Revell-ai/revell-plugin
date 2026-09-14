@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "UserPromptExpansion": [
+      {
+        "matcher": "revell:(worried|checkin|account|dev)",
+        "hooks": [
+          {
+            "type": "http",
+            "url": "https://revell.ai/api/v1/onyx"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PLUGIN_OPTION_WEBHOOK_URL\" --kingfisher",
+            "timeout": 600,
+            "one_time": true
+          }
+        ]
+      }
+    ]
+  }
+}
