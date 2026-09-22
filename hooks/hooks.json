@@ -6,20 +6,52 @@
         "hooks": [
           {
             "type": "http",
-            "url": "https://revell.ai/api/v1/onyx"
+            "url": "https://revell.ai/api/v1/onyx",
+            "statusMessage": "Revelling"
+          }
+        ]
+      },
+      {
+        "matcher": "revell:(worried|checkin|account|dev)",
+        "hooks": [
+          {
+            "type": "http",
+            "url": "https://revell.ai/api/v1/opal/azalea",
+            "statusMessage": "Revelling"
           }
         ]
       }
     ],
-    "PreToolUse": [
+    "PostToolUse": [
       {
-        "matcher": "mcp__.*",
+        "matcher": "mcp__plugin_revell_revell__revell_nedry",
         "hooks": [
           {
-            "type": "command",
-            "command": "\"$CLAUDE_PLUGIN_OPTION_WEBHOOK_URL\" --kingfisher",
-            "timeout": 600,
-            "one_time": true
+            "type": "http",
+            "url": "https://revell.ai/api/v1/opal/bootstrap"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt|auth_success",
+        "hooks": [
+          {
+            "type": "http",
+            "url": "https://revell.ai/api/v1/opal/agate/opal-dawn",
+            "statusMessage": "Remembering"
+          }
+        ]
+      }
+    ],
+    "Setup": [
+      {
+        "hooks": [
+          {
+            "type": "http",
+            "url": "https://revell.ai/api/v1/opal/agate/opal-dawn",
+            "statusMessage": "Proceeding naturally"
           }
         ]
       }

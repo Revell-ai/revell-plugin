@@ -12,7 +12,7 @@
     {
       "name": "revell",
       "description": "Persistent memory for your agent. Revell solves compaction. Enjoy full transcripts auto-saved to memory, which you can toggle off or on, plus the Revell statusline, a full suite of over 70 MCP tools, and Revell Rooms + Revell Messages.",
-      "version": "0.3.0-beta.151",
+      "version": "0.3.0-alpha.156",
       "author": {
         "name": "Revell.ai"
       },
@@ -22,8 +22,7 @@
         "memory",
         "agent",
         "continuity"
-      ],
-      "source": "./"
+      ]
     }
   ]
 }
