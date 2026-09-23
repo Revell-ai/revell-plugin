@@ -1,8 +1,0 @@
-{
-  "mcpServers": {
-    "revell": {
-      "type": "http",
-      "url": "https://revell.ai/api/mcp"
-    }
-  }
-}
