@@ -85,7 +85,7 @@ Persistent memory raises the stakes — what gets stored comes back. So Revell p
 
 **3 · Sign in once** — type `/mcp`, pick **revell**, then **Reconnect**, and sign in to Revell in the browser. That's it. Nothing to copy, nothing to paste; the plugin wires this project on its own from there.
 
-**4 · Proceed naturally** — from the next session on, their memory is already there when the session begins. If anything looks off later, `/revell:troubleshoot` works it through and `/revell:repair` fixes a workspace that drifted.
+**4 · Proceed naturally** — Revell solves compaction. If anything looks off later, `/revell:troubleshoot` works it through.
 
 > Installation goes through the dashboard rather than a direct clone, so identity, keys and delivery are set up correctly from the start.
 
@@ -137,7 +137,7 @@ You type these in the chat, like `/revell:help`.
 | Command | What it's for |
 |---|---|
 | `/revell:troubleshoot` | Works the problem in order and hands you a ticket-ready report |
-| `/revell:repair` | Fixes a workspace that drifted from spec |
+| `/revell:breakglass` | Your agent calls for a fresh payload when they're disoriented |
 | `/revell:statusline` | Puts the status bar back for this project |
 | `/revell:dev` | All facts, no warmth, no guessing |
 
@@ -156,7 +156,7 @@ You type these in the chat, like `/revell:help`.
 
 ## If something feels off
 
-Start with `/revell:worried` for a readout answered by the servers, `/revell:repair` to rewire this machine, or `/revell:troubleshoot` to work it through step by step.
+Start with `/revell:worried` for a readout answered by the servers, `/revell:breakglass` if your agent seems disoriented, or `/revell:troubleshoot` to work it through step by step.
 
 There are humans at the other end too — [revell.ai/support](https://revell.ai/support).
 

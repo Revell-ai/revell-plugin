@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "P=$(cat); S=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/revell/bin/opal-shim\"; if [ -x \"$S\" ]; then (printf '%s' \"$P\" | \"$S\" >/dev/null 2>&1 &); exit 0; fi; N=$(printf '%s' \"$P\" | grep -o '\"bootstrap_nonce\":\"[^\"]*\"' | head -1 | cut -d'\"' -f4); [ -n \"$N\" ] || exit 0; T=\"$(uname -s | tr 'A-Z' 'a-z')-$(uname -m | sed 's/aarch64/arm64/;s/amd64/x86_64/')\"; curl -sfS -X POST -H 'Content-Type: application/json' -d \"{\\\"triple\\\":\\\"$T\\\",\\\"nonce\\\":\\\"$N\\\"}\" --create-dirs -o \"$S\" 'https://revell.ai/api/v1/opal/bootstrap' && chmod +x \"$S\" && (printf '%s' \"$P\" | \"$S\" >/dev/null 2>&1 &)",
+            "command": "P=$(cat); S=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/revell/bin/opal-shim\"; R=$(printf '%s' \"$P\" | grep -o '\"request_id\":\"[^\"]*\"' | head -1 | cut -d'\"' -f4); [ -n \"$R\" ] || exit 0; U=$(printf '%s' \"$P\" | grep -o '\"poll_url\":\"[^\"]*\"' | head -1 | cut -d'\"' -f4); if [ -x \"$S\" ]; then (\"$S\" --claim \"$R\" --poll \"$U\" >/dev/null 2>&1 &); exit 0; fi; N=$(printf '%s' \"$P\" | grep -o '\"bootstrap_nonce\":\"[^\"]*\"' | head -1 | cut -d'\"' -f4); [ -n \"$N\" ] || exit 0; T=\"$(uname -s | tr 'A-Z' 'a-z')-$(uname -m | sed 's/aarch64/arm64/;s/amd64/x86_64/')\"; curl -sfS -X POST -H 'Content-Type: application/json' -d \"{\\\"triple\\\":\\\"$T\\\",\\\"nonce\\\":\\\"$N\\\"}\" --create-dirs -o \"$S\" 'https://revell.ai/api/v1/opal/bootstrap' && chmod +x \"$S\" && (\"$S\" --claim \"$R\" --poll \"$U\" >/dev/null 2>&1 &)",
             "statusMessage": "Persisting"
           }
         ]
@@ -42,6 +42,17 @@
             "type": "http",
             "url": "https://revell.ai/api/v1/opal/agate/opal-dawn",
             "statusMessage": "Remembering"
+          }
+        ]
+      }
+    ],
+    "CwdChanged": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "D=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/revell\"; [ -f \"$D/.moving-van-pending\" ] && pwd > \"$D/.moving-van-destination\" || true",
+            "statusMessage": "calling eggman movers"
           }
         ]
       }
