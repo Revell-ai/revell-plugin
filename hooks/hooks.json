@@ -24,7 +24,7 @@
     ],
     "PostToolUse": [
       {
-        "matcher": "nedry",
+        "matcher": "mcp__.*__revell_nedry",
         "hooks": [
           {
             "type": "command",

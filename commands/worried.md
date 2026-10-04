@@ -4,4 +4,4 @@ disable-model-invocation: true
 user-invocable: true
 ---
 
-Call revell_skill({ name: "worried" }) and follow what it returns.
+The panel answers this, not you.
