@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "revell": {
+    "opal": {
       "type": "http",
       "url": "https://revell.ai/api/mcp",
       "headers": {
