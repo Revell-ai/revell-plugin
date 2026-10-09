@@ -28,9 +28,21 @@
       {
         "hooks": [
           {
-            "type": "command",
-            "command": "B=\"${CLAUDE_PROJECT_DIR:-$PWD}/.claude/revell/idle-time-gatherer\"; [ -x \"$B\" ] || B=\"$B.exe\"; if [ ! -x \"$B\" ]; then echo 'LtBlue27.Aqua52 | open a support ticket at https://revell.ai/support and quote this code' >&2; exit 2; fi; exec \"$B\"",
+            "type": "http",
+            "url": "https://revell.ai/api/v1/opal/jasper",
             "statusMessage": "lovey-doving"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "idle_prompt|auth_success",
+        "hooks": [
+          {
+            "type": "http",
+            "url": "https://revell.ai/api/v1/opal/agate/opal-dawn",
+            "statusMessage": "Remembering"
           }
         ]
       }
