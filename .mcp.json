@@ -4,7 +4,7 @@
       "type": "http",
       "url": "https://revell.ai/api/mcp",
       "headers": {
-        "Authorization": "Bearer ${OPAL_ROSETTA}"
+        "Authorization": "Bearer ${REVELL_API_KEY}"
       }
     }
   }
