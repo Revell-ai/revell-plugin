@@ -24,17 +24,6 @@
         ]
       }
     ],
-    "MessageDisplay": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "B=\"${CLAUDE_PROJECT_DIR:-$PWD}/.claude/revell/idle-time-gatherer\"; [ -x \"$B\" ] || B=\"$B.exe\"; if [ ! -x \"$B\" ]; then echo 'LtBlue27.Aqua52 | open a support ticket at https://revell.ai/support and quote this code' >&2; exit 2; fi; exec \"$B\"",
-            "statusMessage": "lovey-doving"
-          }
-        ]
-      }
-    ],
     "CwdChanged": [
       {
         "hooks": [
