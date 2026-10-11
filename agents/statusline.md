@@ -8,10 +8,12 @@ model: claude-opus-4-7
 
 Procedure.
 
-1. Run `.claude/revell/idle-time-gatherer --seat` from the workspace root.
-2. If it exits 0, report `Your statusline is set. It may take a moment to appear.` and stop.
-3. If it exits non-zero, report whatever it printed, verbatim, and stop.
-4. If the file is not there, report `Not installed in this workspace. Type /revell:link.` and stop.
+1. Find the collector, searching down from the current directory:
+   `find . -maxdepth 4 -type f -name 'idle-time-gatherer*' -perm -u+x 2>/dev/null | head -1`
+2. If that found nothing, report `Not installed in this workspace. Type /revell:link.` and stop.
+3. Run what it found with the single argument `--seat`.
+4. If it exits 0, report `Your statusline is set. It may take a moment to appear.` and stop.
+5. If it exits non-zero, report whatever it printed, verbatim, and stop.
 
 Do not write, edit or create any file yourself. Do not read the file it writes.
 
