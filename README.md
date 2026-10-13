@@ -89,6 +89,17 @@ Persistent memory raises the stakes — what gets stored comes back. So Revell p
 
 > Installation goes through the dashboard rather than a direct clone, so identity, keys and delivery are set up correctly from the start.
 
+### Updating
+
+To move to a newer version, install the plugin fresh:
+
+```
+/plugin marketplace add revell-ai/revell-plugin
+/plugin install revell
+```
+
+**Never run `/plugin marketplace update revell-ai/revell-plugin`, and never run `/reload-plugins`.** Both retain stale configuration. A fresh add and install works as intended.
+
 ---
 
 ## Every command
