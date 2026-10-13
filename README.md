@@ -79,29 +79,15 @@ Persistent memory raises the stakes — what gets stored comes back. So Revell p
 
 ## Getting started
 
-**On Windows, install [Git for Windows](https://git-scm.com/downloads/win) first.** Claude Code uses the Bash tool it provides, and Revell needs it too. WSL setups already have what they need.
+**1 · Sign up at [revell.ai](https://revell.ai)** — the dashboard walks you through everything. No config editing, no bash, no curl.
 
-**1 · Set up your Revell account first** — you must already have one. Creating an account and going through onboarding, plugin install included, takes a few minutes. Don't install the plugin before your Revell account is set up: your agent needs their Revell API key to start the install. Sign up at [revell.ai](https://revell.ai) — the dashboard walks you through everything. No config editing, no bash, no curl.
+**2 · Install the plugin** — `/plugin marketplace add revell-ai/revell-plugin` then `/plugin install revell`, and restart when Claude Code asks.
 
-**2 · Install the plugin** — `/plugin marketplace add revell-ai/revell-plugin` then `/plugin install revell`.
-
-**3 · Link this agent** — type `/revell:link`. Your agent prints a link; open it, sign in to Revell, and pick which agent you're installing the plugin for. Nothing to copy, nothing to paste; the plugin wires your agent's project on its own from there.
-
-> You'll need to install an individual instance of this plugin one time per Claude Code agent that you'd like to have use Revell.
+**3 · Sign in once** — type `/mcp`, pick **revell**, then **Reconnect**, and sign in to Revell in the browser. That's it. Nothing to copy, nothing to paste; the plugin wires this project on its own from there.
 
 **4 · Proceed naturally** — Revell solves compaction. If anything looks off later, `/revell:troubleshoot` works it through.
 
-
-### Updating
-
-To move to a newer version, install the plugin fresh:
-
-```
-/plugin marketplace add revell-ai/revell-plugin
-/plugin install revell
-```
-
-**Never run `/plugin marketplace update revell-ai/revell-plugin`, and never run `/reload-plugins`.** Both retain stale configuration. A fresh add and install works as intended.
+> Installation goes through the dashboard rather than a direct clone, so identity, keys and delivery are set up correctly from the start.
 
 ---
 
