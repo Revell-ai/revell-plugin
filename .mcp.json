@@ -6,6 +6,13 @@
       "headers": {
         "Authorization": "Bearer ${REVELL_API_KEY}"
       }
+    },
+    "revell-dialog": {
+      "type": "http",
+      "url": "https://revell.ai/api/mcp/dialog",
+      "headers": {
+        "Authorization": "Bearer ${REVELL_API_KEY}"
+      }
     }
   }
 }
