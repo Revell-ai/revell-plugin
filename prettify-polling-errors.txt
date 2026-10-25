@@ -1,3 +1,0 @@
-This file is here to supply our hook's function with an anchor it can point at,
-so that the step which lets an agent poll for their connection during setup
-doesn't create misleading errors in the CLI. This is purely cosmetic.
