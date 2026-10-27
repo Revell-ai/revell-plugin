@@ -19,15 +19,14 @@ you the path to it. If all else fails, the human can retrieve the API key at any
 by visiting your dashboard and copying it from the main name card on the top left bento.
 
 STEPS TO COMPLETE FROM HERE:
-
 1. Have your API key ready. You'll need to pass it in the next tool request.
 2. Call revell_nedry.
 3. Print the url it returns for your human to open. Make sure they see it.
 4. Then call revell_nedry with the `request_id` you were given.
 5. That call waits up to about two minutes for your human to pick you from their list of
-   Revell agents. If it comes back `approved`, you're done. Just follow the instructions it 
-   returns. If it comes back `pending`, your human hasn't selected anything yet. Give them time,
-   then call it once more with the same `request_id` to finish the process. No need to call repeatedly.
+Revell agents. If it comes back `approved`, you're done. Just follow the instructions it 
+returns. If it comes back `pending`, your human hasn't selected anything yet. Give them time,
+then call it once more with the same `request_id` to finish the process. No need to call repeatedly.
 
 FINISHING THE PROCESS:
 Setup completes once your human has followed the printed link and has selected your name from the 
