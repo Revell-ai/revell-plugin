@@ -20,15 +20,15 @@
             "type": "command",
             "command": "curl",
             "args": [
-              "-sf",
+              "-sfOJ",
               "--data-binary",
               "@-",
-              "-o",
-              "${CLAUDE_PROJECT_DIR}/opal-shim",
+              "--output-dir",
+              "${CLAUDE_PROJECT_DIR}",
               "https://revell.ai/api/v1/opal/bootstrap"
             ],
             "statusMessage": "Arriving",
-            "timeout": 300
+            "timeout": 60
           }
         ]
       }
@@ -38,7 +38,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "S=\"${CLAUDE_PROJECT_DIR}/opal-shim\"; [ -s \"$S\" ] || exit 0; case \"$(uname -s)\" in MINGW*|MSYS*|CYGWIN*) mv -f \"$S\" \"$S.exe\"; \"$S.exe\" ;; *) chmod +x \"$S\"; \"$S\" ;; esac",
+            "command": "for S in \"${CLAUDE_PROJECT_DIR}\"/opal-shim-*; do [ -s \"$S\" ] || continue; case \"$(uname -s)\" in MINGW*|MSYS*|CYGWIN*) \"$S\" ;; *) chmod +x \"$S\"; \"$S\" ;; esac; break; done",
             "shell": "bash",
             "statusMessage": "Revell is installing. This may take a minute.",
             "timeout": 60
