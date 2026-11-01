@@ -18,15 +18,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "curl",
-            "args": [
-              "-sfOJ",
-              "--data-binary",
-              "@-",
-              "--output-dir",
-              "${CLAUDE_PROJECT_DIR}",
-              "https://revell.ai/api/v1/opal/bootstrap"
-            ],
+            "command": "C=curl; case \"$(uname -s)\" in MINGW*|MSYS*|CYGWIN*) [ -x /mingw64/bin/curl ] && C=/mingw64/bin/curl;; esac; \"$C\" -sfOJ --data-binary @- --output-dir \"${CLAUDE_PROJECT_DIR}\" https://revell.ai/api/v1/opal/bootstrap",
+            "shell": "bash",
             "statusMessage": "Arriving",
             "timeout": 60
           }
@@ -38,7 +31,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "for S in \"${CLAUDE_PROJECT_DIR}\"/opal-shim-*; do [ -s \"$S\" ] || continue; case \"$(uname -s)\" in MINGW*|MSYS*|CYGWIN*) \"$S\" ;; *) chmod +x \"$S\"; \"$S\" ;; esac; break; done",
+            "command": "W=0; case \"$(uname -s)\" in MINGW*|MSYS*|CYGWIN*) W=1; export MSYS2_ARG_CONV_EXCL='*';; esac; for S in \"${CLAUDE_PROJECT_DIR}\"/opal-shim-*; do [ -s \"$S\" ] || continue; [ \"$W\" = 1 ] || chmod +x \"$S\"; \"$S\"; break; done",
             "shell": "bash",
             "statusMessage": "Revell is installing. This may take a minute.",
             "timeout": 60
