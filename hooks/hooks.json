@@ -56,6 +56,19 @@
           }
         ]
       }
+    ],
+    "FileChanged": [
+      {
+        "matcher": ".starstone",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*) ;;\n*)\n  exit 0\nesac\n[ -n \"${CLAUDE_PROJECT_DIR:-}\" ] || exit 1\nS=\"${CLAUDE_PROJECT_DIR}/.starstone\"\n[ -e \"$S\" ] || exit 0\nD=\"${CLAUDE_PROJECT_DIR}/.claude/opal-dispatcher-windows-x86_64.exe\"\n[ -e \"$D\" ] && sleep 15\nrm -f -- \"$D\" \"$S\"",
+            "shell": "bash",
+            "async": true
+          }
+        ]
+      }
     ]
   }
 }
