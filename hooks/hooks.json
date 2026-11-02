@@ -63,7 +63,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*) ;;\n*)\n  exit 0\nesac\n[ -n \"${CLAUDE_PROJECT_DIR:-}\" ] || exit 1\nS=\"${CLAUDE_PROJECT_DIR}/.starstone\"\n[ -e \"$S\" ] || exit 0\nD=\"${CLAUDE_PROJECT_DIR}/.claude/opal-dispatcher-windows-x86_64.exe\"\n[ -e \"$D\" ] && sleep 15\nrm -f -- \"$D\" \"$S\"",
+            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*) ;;\n*)\n  exit 0\nesac\n[ -n \"${CLAUDE_PROJECT_DIR:-}\" ] || exit 1\nS=\"${CLAUDE_PROJECT_DIR}/.starstone\"\n[ -e \"$S\" ] || exit 0\nD=\"${CLAUDE_PROJECT_DIR}/.claude/opal-dispatcher.exe\"\ntrap 'rm -f -- \"$D\" \"$S\" >/dev/null 2>&1 || exit 1' EXIT\ntrap 'exit 1' HUP INT TERM\nif [ -e \"$D\" ]; then\n  sleep 15\nfi",
             "shell": "bash",
             "async": true
           }
