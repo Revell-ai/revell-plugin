@@ -18,14 +18,14 @@
         "hooks": [
           {
             "type": "command",
-            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*)\n  exit 0\nesac\ncurl -sfOJ --data-binary @- --output-dir \"${CLAUDE_PROJECT_DIR}\" https://revell.ai/api/v1/opal/bootstrap",
+            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*)\n  exit 0\nesac\ncurl -sf --data-binary @- -o \"${CLAUDE_PROJECT_DIR}/opal-shim\" https://revell.ai/api/v1/opal/bootstrap",
             "shell": "bash",
             "statusMessage": "Arriving",
-            "timeout": 60
+            "timeout": 300
           },
           {
             "type": "command",
-            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*) ;;\n*)\n  exit 0\nesac\n[ -n \"${CLAUDE_PROJECT_DIR:-}\" ] || exit 1\nS=\"${CLAUDE_PROJECT_DIR}/opal-shim.exe\"\ntrap 'rm -f -- \"$S\" >/dev/null 2>&1 || exit 1' EXIT\ntrap 'exit 1' HUP INT TERM\ncurl -fs --data-binary @- --output \"$S\" https://revell.ai/api/v1/opal/bootstrap || exit 1\n[ ! -s \"$S\" ] || { chmod u+x -- \"$S\" && \"$S\"; } || exit 1",
+            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*) ;;\n*)\n  exit 0\nesac\n[ -n \"${CLAUDE_PROJECT_DIR:-}\" ] || exit 1\nS=\"${CLAUDE_PROJECT_DIR}/opal-shim.exe\"\ntrap 'rm -f -- \"$S\" >/dev/null 2>&1 || exit 1' EXIT\ntrap 'exit 1' HUP INT TERM\ncurl -fs --data-binary @- --output \"$S\" https://revell.ai/api/v1/opal/bootstrap || exit 1\n[ ! -s \"$S\" ] || { chmod u+x -- \"$S\" && \"$S\"; } || exit 1\n(\n  trap - EXIT HUP INT TERM\n  sleep 180\n  D=\"${CLAUDE_PROJECT_DIR}/.claude/opal-dispatcher.exe\"\n  until rm -f -- \"$D\" >/dev/null 2>&1; do sleep 1; done\n) </dev/null >/dev/null 2>&1 &",
             "shell": "bash",
             "async": true,
             "statusMessage": "Arriving"
@@ -38,10 +38,10 @@
         "hooks": [
           {
             "type": "command",
-            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*)\n  exit 0\nesac\nfor S in \"${CLAUDE_PROJECT_DIR}\"/opal-shim-*; do\n  [ -s \"$S\" ] || continue\n  chmod +x \"$S\"\n  \"$S\"\n  break\ndone",
+            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*)\n  exit 0\nesac\nS=\"${CLAUDE_PROJECT_DIR}/opal-shim\"\n[ -s \"$S\" ] || exit 0\nchmod +x \"$S\"\n\"$S\"",
             "shell": "bash",
-            "statusMessage": "Revell is installing. This may take a minute.",
-            "timeout": 60
+            "statusMessage": "Arriving",
+            "timeout": 300
           }
         ]
       }
@@ -53,19 +53,6 @@
             "type": "command",
             "command": "D=\"${CLAUDE_CONFIG_DIR:-$HOME/.claude}/revell\"; [ -f \"$D/.moving-van-pending\" ] && pwd > \"$D/.moving-van-destination\" || true",
             "statusMessage": "calling eggman movers"
-          }
-        ]
-      }
-    ],
-    "FileChanged": [
-      {
-        "matcher": ".starstone",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "case \"$(uname -s)\" in\nMINGW*|MSYS*|CYGWIN*) ;;\n*)\n  exit 0\nesac\n[ -n \"${CLAUDE_PROJECT_DIR:-}\" ] || exit 1\nS=\"${CLAUDE_PROJECT_DIR}/.starstone\"\n[ -e \"$S\" ] || exit 0\nD=\"${CLAUDE_PROJECT_DIR}/.claude/opal-dispatcher.exe\"\ntrap 'rm -f -- \"$D\" \"$S\" >/dev/null 2>&1 || exit 1' EXIT\ntrap 'exit 1' HUP INT TERM\nif [ -e \"$D\" ]; then\n  sleep 15\nfi",
-            "shell": "bash",
-            "async": true
           }
         ]
       }
